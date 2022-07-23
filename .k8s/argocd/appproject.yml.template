@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: slidev
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: https://gitlab.tingtt.jp/root/slidev
+  destinations:
+    - name: "*"
+      namespace: "slidev"
+      server: "*"
+  sourceRepos:
+    - https://gitlab.tingtt.jp/root/slidev.git

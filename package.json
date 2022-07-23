@@ -1,5 +1,5 @@
 {
-  "name": "kubernetes_argocd",
+  "name": "tingtt-slidev",
   "private": true,
   "scripts": {
     "build": "slidev build",

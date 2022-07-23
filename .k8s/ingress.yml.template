@@ -1,0 +1,37 @@
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ingress
+  namespace: slidev
+type: kubernetes.io/tls
+# The TLS secret must contain keys named 'tls.crt' and 'tls.key' that contain the certificate and private key to use for TLS.
+data:
+  tls.crt: |
+
+  tls.key: |
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: slidev
+spec:
+  tls:
+    - hosts:
+        - slidev.example.com
+      secretName: ingress
+  rules:
+    - host: slidev.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: service1
+                port:
+                  number: 80
+---
+

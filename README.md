@@ -1,12 +1,12 @@
 # Slidev
 
-# Usage
+## Usage
 
 ```bash
 yarn dev
 ```
 
-## Docker
+### Docker
 
 ```bash
 docker compose up -d
