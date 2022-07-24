@@ -1,4 +1,5 @@
 BRANCH := $(shell git branch --format="%(refname:short)" | head -n1)
+.PHONY: tag
 tag:
 	git tag ${TAG}
 	cat .k8s/deploy.yml.template | \
