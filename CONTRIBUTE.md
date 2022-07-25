@@ -10,6 +10,10 @@ git checkout -b BRANCH_NAME
 ```
 
 ```bash
+code --install-extension antfu.slidev
+```
+
+```bash
 yarn
 yarn dev
 ```
