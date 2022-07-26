@@ -1,3 +1,12 @@
+.PHONY: branch
+branch:
+	git checkout -b ${BRANCH}
+	cat .k8s/argocd/application.yml.template | \
+		sed "s/BRANCH/${BRANCH}/g" | \
+		tee .k8s/argocd/application.yml
+	git add .k8s/argocd/application.yml
+	git commit
+
 BRANCH := $(shell git branch --format="%(refname:short)" | head -n1)
 .PHONY: tag
 tag:
