@@ -6,7 +6,7 @@ stages:
 build-main-job:
   stage: build
   rules:
-    - if: $CI_COMMIT_BRANCH == "" && $CI_COMMIT_TAG =~ /^*\/v*/
+    - if: $CI_COMMIT_BRANCH == "" && $CI_COMMIT_TAG =~ /^.*\/v.*/
   script:
     - docker build . \
         -t $DOCKER_REGISTORY_URL/tingtt/$(git branch --contains tags/$CI_COMMIT_TAG | grep -v HEAD | xargs):latest \
@@ -15,7 +15,7 @@ build-main-job:
 push-tags-job:
   stage: build
   rules:
-    - if: $CI_COMMIT_BRANCH == "" && $CI_COMMIT_TAG =~ /^*\/v*/
+    - if: $CI_COMMIT_BRANCH == "" && $CI_COMMIT_TAG =~ /^.*\/v.*/
   needs:
     - build-main-job
   script:
