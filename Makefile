@@ -15,5 +15,5 @@ tag:
 		sed "s/image: tingtt\/slidev\/branch:tag/image: tingtt\/slidev\/${BRANCH}:${TAG}/g" | \
 		tee .k8s/deploy.yml
 	git add .k8s/deploy.yml
-	git commit
+	git commit || true
 	git tag ${BRANCH}/${TAG}
