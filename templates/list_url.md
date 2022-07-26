@@ -19,7 +19,7 @@ class: text-[1.5rem] flex flex-col pb-[0.5rem]
   class="absolute flex w-1/10 right-[6rem] top-22 bottom-8"
 >
   <div class="my-auto flex flex-col space-y-4" >
-    <img src="example.svg" />
+    <img src="/example.svg" />
   </div>
 </div>
 
