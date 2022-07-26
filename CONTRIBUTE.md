@@ -6,7 +6,7 @@ git clone git@gitlab.tingtt.jp:root/slidev.git
 
 ```bash
 cd slidev
-git checkout -b BRANCH_NAME
+make branch BRANCH=branch_name
 ```
 
 ```bash
@@ -21,11 +21,13 @@ yarn dev
 ```bash
 # Update slide
 vim slides.md
+
+git add slides.md
+git commit -m '...'
 ```
 
 ```bash
 make tag TAG=v1.0.0
 
-git add .
 git push origin head
 ```
