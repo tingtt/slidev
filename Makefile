@@ -7,12 +7,12 @@ branch:
 	git add .k8s/argocd/application.yml
 	git commit
 
-BRANCH := $(shell git branch --format="%(refname:short)" | head -n1)
+BRANCH := $(shell git branch --show-current)
 .PHONY: tag
 tag:
 	cat .k8s/deploy.yml.template | \
-		sed "s/name: slidev/name: slidev-${BRANCH}/g" | \
-		sed "s/image: tingtt\/slidev\/branch:tag/image: tingtt\/slidev\/${BRANCH}:${TAG}/g" | \
+		sed "s/BRANCH/${BRANCH}/g" | \
+		sed "s/TAG/${TAG}/g" | \
 		tee .k8s/deploy.yml
 	git add .k8s/deploy.yml
 	git commit || true

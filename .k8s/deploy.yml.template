@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: slidev
+  name: slidev-BRANCH
   namespace: slidev
   labels:
     app: slidev
@@ -22,8 +22,8 @@ spec:
         app: slidev
     spec:
       containers:
-        - name: slidev
-          image: registry.tingtt.jp/tingtt/slidev/branch:tag
+        - name: slidev-BRANCH
+          image: registry.tingtt.jp/tingtt/slidev/BRANCH:TAG
           imagePullPolicy: Always
           resources:
             requests:
@@ -42,21 +42,21 @@ spec:
             periodSeconds: 10
           ports:
             - containerPort: 80
-              name: slidev
+              name: slidev-BRANCH
       restartPolicy: Always
 ---
 # https://kubernetes.io/docs/concepts/services-networking/service/
 apiVersion: v1
 kind: Service
 metadata:
-  name: slidev
+  name: slidev-BRANCH
   namespace: slidev
 spec:
   selector:
     app: slidev
   type: ClusterIP
   ports:
-    - name: slidev
+    - name: slidev-BRANCH
       protocol: TCP
       port: 80
       targetPort: 80
