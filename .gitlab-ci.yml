@@ -10,7 +10,8 @@ build-main-job:
   except:
     - branches
   script:
-    - docker build . \
+    - |
+      docker build . \
         -t $DOCKER_REGISTORY_URL/tingtt/$(git branch --contains tags/$CI_COMMIT_TAG | grep -v HEAD | xargs):latest \
         -t $DOCKER_REGISTORY_URL/tingtt/$(git branch --contains tags/$CI_COMMIT_TAG | grep -v HEAD | xargs):$(echo $CI_COMMIT_TAG | cut -d '/' -f 2)
 
