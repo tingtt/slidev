@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-flow
-          image: tingtt/slidev/flow:v2.0.0
+          image: registry.tingtt.jp/tingtt/slidev/flow:v2.0.0
           imagePullPolicy: Always
           resources:
             requests:
