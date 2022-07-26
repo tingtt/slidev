@@ -1,5 +1,6 @@
 ---
 title: Title
+colorSchema: 'dark'
 src: pages/1.md
 ---
 
