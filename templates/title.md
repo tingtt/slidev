@@ -20,6 +20,24 @@ title: Title
   Sub title
 </div>
 
+<div
+  class="
+    absolute top-[2.5rem] right-[3.5rem]
+    text-right
+  "
+>
+  Organization<br>
+  xxxx/xx/xx
+</div>
+<div
+  class="
+    absolute bottom-[2.5rem] right-[3.5rem]
+    text-right
+  "
+>
+  Name
+</div>
+
 <!--
 Note
 -->
