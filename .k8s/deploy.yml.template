@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev
-          image: tingtt/slidev/branch:tag
+          image: registry.tingtt.jp/tingtt/slidev/branch:tag
           imagePullPolicy: Always
           resources:
             requests:
