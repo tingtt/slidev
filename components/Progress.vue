@@ -1,6 +1,6 @@
 <template>
     <div class="absolute z-50 h-[0.5rem] bottom-0 left-0 right-0 flex justify-center">
-        <div class="w-full relative h-full bg-cyan-500 overflow-hidden">
+        <div class="w-full relative h-full bg-green-400 overflow-hidden">
             <span class="absolute h-full bg-gray-500 transition-all duration-300" :style="style_current"></span>
         </div>
     </div>
