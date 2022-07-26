@@ -4,9 +4,9 @@ class: flex
 
 <div
   class="
-    my-auto text-[3.5rem] text-black text-opacity-0
-    bg-[#2B90B6] bg-cover
-    bg-clip-text
+    my-auto text-[3.5rem] pb-[0.5rem]
+    text-black text-opacity-0
+    bg-[#2B90B6] bg-cover bg-clip-text
     bg-gradient-to-r from-cyan-400 to-cyan-700
   "
 >
