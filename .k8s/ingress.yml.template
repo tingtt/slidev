@@ -25,3 +25,10 @@ spec:
                 name: slidev-BRANCH
                 port:
                   number: 80
+          - path: "/BRANCH"
+            pathType: Exact
+            backend:
+              service:
+                name: slidev-BRANCH
+                port:
+                  number: 80
