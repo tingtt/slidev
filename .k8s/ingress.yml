@@ -25,3 +25,10 @@ spec:
                 name: slidev-flow
                 port:
                   number: 80
+          - path: "/flow"
+            pathType: Exact
+            backend:
+              service:
+                name: slidev-flow
+                port:
+                  number: 80
