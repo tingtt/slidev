@@ -4,8 +4,11 @@ branch:
 	cat .k8s/argocd/application.yml.template | \
 		sed "s/BRANCH/${BRANCH}/g" | \
 		tee .k8s/argocd/application.yml
-	git add .k8s/argocd/application.yml
-	git commit
+	cat .k8s/ingress.yml.template | \
+		sed "s/BRANCH/${BRANCH}/g" | \
+		tee .k8s/ingress.yml
+	git add .k8s/argocd/application.yml .k8s/ingress.yml
+	git commit -m '[add] checkout ${BRANCH}'
 
 BRANCH := $(shell git branch --show-current)
 .PHONY: tag
@@ -15,5 +18,5 @@ tag:
 		sed "s/TAG/${TAG}/g" | \
 		tee .k8s/deploy.yml
 	git add .k8s/deploy.yml
-	git commit || true
+	git commit -m '[add] ${TAG}' || true
 	git tag ${BRANCH}/${TAG}
