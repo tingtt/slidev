@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: slidev-kubernetes_argocd
+  name: slidev-kubernetes-argocd
   namespace: argocd
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
   source:
     path: .k8s
     repoURL: 'https://gitlab.tingtt.jp/root/slidev.git'
-    targetRevision: kubernetes_argocd
+    targetRevision: kubernetes-argocd
   project: slidev
   syncPolicy:
     automated: {}

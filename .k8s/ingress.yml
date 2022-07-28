@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-kubernetes_argocd
+  name: ingress-kubernetes-argocd
   namespace: slidev
   labels:
     name: ingress
@@ -18,17 +18,17 @@ spec:
     - host: slidev.tingtt.jp
       http:
         paths:
-          - path: "/kubernetes_argocd/(.*)"
+          - path: "/kubernetes-argocd/(.*)"
             pathType: Prefix
             backend:
               service:
-                name: slidev-kubernetes_argocd
+                name: slidev-kubernetes-argocd
                 port:
                   number: 80
-          - path: "/kubernetes_argocd"
+          - path: "/kubernetes-argocd"
             pathType: Exact
             backend:
               service:
-                name: slidev-kubernetes_argocd
+                name: slidev-kubernetes-argocd
                 port:
                   number: 80
