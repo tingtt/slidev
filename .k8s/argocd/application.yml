@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: slidev-kubernetes-argocd
+  name: k8s-argocd
   namespace: argocd
 spec:
   destination:
