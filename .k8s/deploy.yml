@@ -1,0 +1,64 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slidev-kubernetes-argocd
+  namespace: slidev
+  labels:
+    app: slidev
+spec:
+  selector:
+    matchLabels:
+      app: slidev
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: slidev
+    spec:
+      containers:
+        - name: slidev-kubernetes-argocd
+          image: registry.tingtt.jp/tingtt/slidev/kubernetes-argocd:v3.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          ports:
+            - containerPort: 80
+              name: slidev-kubernetes-argocd
+      restartPolicy: Always
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: slidev-kubernetes-argocd
+  namespace: slidev
+spec:
+  selector:
+    app: slidev
+  type: ClusterIP
+  ports:
+    - name: slidev-kubernetes-argocd
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+
