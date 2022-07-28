@@ -53,7 +53,7 @@ metadata:
   namespace: slidev
 spec:
   selector:
-    app: slidev
+    app: slidev-BRANCH
   type: ClusterIP
   ports:
     - name: slidev-BRANCH
