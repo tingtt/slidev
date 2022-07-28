@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-argocd
+  name: slidev-k8s-argocd
   namespace: slidev
   labels:
     app: slidev
@@ -22,8 +22,8 @@ spec:
         app: slidev
     spec:
       containers:
-        - name: k8s-argocd
-          image: registry.tingtt.jp/tingtt/slidev/kubernetes-argocd:v3.0.0
+        - name: slidev-k8s-argocd
+          image: registry.tingtt.jp/tingtt/slidev/k8s-argocd:v3.0.1
           imagePullPolicy: Always
           resources:
             requests:
@@ -42,21 +42,21 @@ spec:
             periodSeconds: 10
           ports:
             - containerPort: 80
-              name: k8s-argocd
+              name: slidev-k8s-argocd
       restartPolicy: Always
 ---
 # https://kubernetes.io/docs/concepts/services-networking/service/
 apiVersion: v1
 kind: Service
 metadata:
-  name: k8s-argocd
+  name: slidev-k8s-argocd
   namespace: slidev
 spec:
   selector:
     app: slidev
   type: ClusterIP
   ports:
-    - name: k8s-argocd
+    - name: slidev-k8s-argocd
       protocol: TCP
       port: 80
       targetPort: 80
