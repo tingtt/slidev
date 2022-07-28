@@ -22,13 +22,13 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: slidev-kubernetes-argocd
+                name: k8s-argocd
                 port:
                   number: 80
           - path: "/kubernetes-argocd"
             pathType: Exact
             backend:
               service:
-                name: slidev-kubernetes-argocd
+                name: k8s-argocd
                 port:
                   number: 80
