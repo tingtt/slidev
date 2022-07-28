@@ -4,10 +4,10 @@ branch:
 	cat .k8s/argocd/application.yml.template | \
 		sed "s/BRANCH/${BRANCH}/g" | \
 		tee .k8s/argocd/application.yml
-	cat .k8s/ingress.yml.template | \
+	cat .k8s/ingress/ingress.yml.template | \
 		sed "s/BRANCH/${BRANCH}/g" | \
-		tee .k8s/ingress.yml
-	git add .k8s/argocd/application.yml .k8s/ingress.yml
+		tee .k8s/ingress/ingress.yml
+	git add .k8s/argocd/application.yml .k8s/ingress/ingress.yml
 	git commit -m '[add] checkout ${BRANCH}'
 
 BRANCH := $(shell git branch --show-current)
