@@ -5,11 +5,11 @@ metadata:
   name: slidev-BRANCH
   namespace: slidev
   labels:
-    app: slidev
+    app: slidev-BRANCH
 spec:
   selector:
     matchLabels:
-      app: slidev
+      app: slidev-BRANCH
   replicas: 1
   strategy:
     rollingUpdate:
@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: slidev
+        app: slidev-BRANCH
     spec:
       containers:
         - name: slidev-BRANCH
