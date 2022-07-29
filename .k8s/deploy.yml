@@ -5,11 +5,11 @@ metadata:
   name: slidev-k8s-argo
   namespace: slidev
   labels:
-    app: slidev
+    app: slidev-k8s-argo
 spec:
   selector:
     matchLabels:
-      app: slidev
+      app: slidev-k8s-argo
   replicas: 1
   strategy:
     rollingUpdate:
@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: slidev
+        app: slidev-k8s-argo
     spec:
       containers:
         - name: slidev-k8s-argo
