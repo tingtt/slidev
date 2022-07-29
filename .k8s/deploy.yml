@@ -5,11 +5,11 @@ metadata:
   name: slidev-flow
   namespace: slidev
   labels:
-    app: slidev
+    app: slidev-flow
 spec:
   selector:
     matchLabels:
-      app: slidev
+      app: slidev-flow
   replicas: 1
   strategy:
     rollingUpdate:
@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: slidev
+        app: slidev-flow
     spec:
       containers:
         - name: slidev-flow
