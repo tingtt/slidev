@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-k8s-argo
-          image: registry.tingtt.jp/tingtt/slidev/k8s-argo:v3.2.0
+          image: registry.tingtt.jp/tingtt/slidev/k8s-argo:v3.2.1
           imagePullPolicy: Always
           resources:
             requests:
