@@ -2,14 +2,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: slidev-graduating-project
+  name: slidev-cttit
   namespace: slidev
   labels:
-    app: slidev-graduating-project
+    app: slidev-cttit
 spec:
   selector:
     matchLabels:
-      app: slidev-graduating-project
+      app: slidev-cttit
   replicas: 1
   strategy:
     rollingUpdate:
@@ -19,11 +19,11 @@ spec:
   template:
     metadata:
       labels:
-        app: slidev-graduating-project
+        app: slidev-cttit
     spec:
       containers:
-        - name: slidev-graduating-project
-          image: registry.tingtt.jp/tingtt/slidev/graduating-project:v1.0.0
+        - name: slidev-cttit
+          image: registry.tingtt.jp/tingtt/slidev/cttit:v1.0.0
           imagePullPolicy: Always
           resources:
             requests:
@@ -51,21 +51,21 @@ spec:
             periodSeconds: 10
           ports:
             - containerPort: 80
-              name: slidev-graduating-project
+              name: slidev-cttit
       restartPolicy: Always
 ---
 # https://kubernetes.io/docs/concepts/services-networking/service/
 apiVersion: v1
 kind: Service
 metadata:
-  name: slidev-graduating-project
+  name: slidev-cttit
   namespace: slidev
 spec:
   selector:
-    app: slidev-graduating-project
+    app: slidev-cttit
   type: ClusterIP
   ports:
-    - name: slidev-graduating-project
+    - name: slidev-cttit
       protocol: TCP
       port: 80
       targetPort: 80
