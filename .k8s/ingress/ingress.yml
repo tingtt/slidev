@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-graduating-project
+  name: ingress-cttit
   namespace: slidev
   labels:
     name: ingress
@@ -18,17 +18,17 @@ spec:
     - host: slidev.tingtt.jp
       http:
         paths:
-          - path: "/graduating-project/(.*)"
+          - path: "/cttit/(.*)"
             pathType: Prefix
             backend:
               service:
-                name: slidev-graduating-project
+                name: slidev-cttit
                 port:
                   number: 80
-          - path: "/graduating-project"
+          - path: "/cttit"
             pathType: Exact
             backend:
               service:
-                name: slidev-graduating-project
+                name: slidev-cttit
                 port:
                   number: 80
