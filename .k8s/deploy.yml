@@ -1,0 +1,73 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slidev-intro
+  namespace: slidev
+  labels:
+    app: slidev-intro
+spec:
+  selector:
+    matchLabels:
+      app: slidev-intro
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: slidev-intro
+    spec:
+      containers:
+        - name: slidev-intro
+          image: registry.tingtt.jp/tingtt/slidev/intro:v0.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /-/readiness
+              port: 80
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          ports:
+            - containerPort: 80
+              name: slidev-intro
+      restartPolicy: Always
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: slidev-intro
+  namespace: slidev
+spec:
+  selector:
+    app: slidev-intro
+  type: ClusterIP
+  ports:
+    - name: slidev-intro
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+
