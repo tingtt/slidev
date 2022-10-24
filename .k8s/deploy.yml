@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-cttit
-          image: registry.tingtt.jp/tingtt/slidev/cttit:v1.0.1
+          image: registry.tingtt.jp/tingtt/slidev/cttit:v1.0.2
           imagePullPolicy: Always
           resources:
             requests:
