@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-intro
-          image: registry.tingtt.jp/tingtt/slidev/intro:v0.0.0
+          image: registry.tingtt.jp/tingtt/slidev/intro:v1.0.0
           imagePullPolicy: Always
           resources:
             requests:
