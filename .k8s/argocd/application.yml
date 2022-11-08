@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: slidev-systemd-cd
+  namespace: argocd
+spec:
+  destination:
+    namespace: slidev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .k8s
+    repoURL: 'https://gitlab.tingtt.jp/root/slidev.git'
+    targetRevision: systemd-cd
+  project: slidev
+  syncPolicy:
+    automated: {}
