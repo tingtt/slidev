@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: slidev-hotcale
+  namespace: argocd
+spec:
+  destination:
+    namespace: slidev
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: .k8s
+    repoURL: 'https://gitlab.tingtt.jp/root/slidev.git'
+    targetRevision: hotcale
+  project: slidev
+  syncPolicy:
+    automated: {}
