@@ -34,7 +34,7 @@ jobs:
           images: tingtt/slide
 
       - name: Build and push Docker image
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/')
         uses: docker/build-push-action@v3
         with:
           context: .
