@@ -7,6 +7,8 @@ RUN yarn --prod
 COPY . .
 RUN yarn build --base $BASE
 RUN sed s@src=\"\/@src=\"@g -i /app/dist/assets/index.*.js
+RUN sed s@src=\"\/@src=\"@g -i /app/dist/index.html
+RUN sed s@href=\"\/@href=\"@g -i /app/dist/index.html
 
 # production stage
 FROM nginx:stable-alpine as production-stage
