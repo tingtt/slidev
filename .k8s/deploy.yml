@@ -2,14 +2,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: slidev-BRANCH
+  name: slidev-atomic-design
   namespace: slidev
   labels:
-    app: slidev-BRANCH
+    app: slidev-atomic-design
 spec:
   selector:
     matchLabels:
-      app: slidev-BRANCH
+      app: slidev-atomic-design
   replicas: 1
   strategy:
     rollingUpdate:
@@ -19,11 +19,11 @@ spec:
   template:
     metadata:
       labels:
-        app: slidev-BRANCH
+        app: slidev-atomic-design
     spec:
       containers:
-        - name: slidev-BRANCH
-          image: tingtt/slide:BRANCH-TAG
+        - name: slidev-atomic-design
+          image: tingtt/slide:atomic-design-v1.0.0
           imagePullPolicy: Always
           resources:
             requests:
@@ -58,11 +58,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: slidev-BRANCH
+  name: slidev-atomic-design
   namespace: slidev
 spec:
   selector:
-    app: slidev-BRANCH
+    app: slidev-atomic-design
   type: ClusterIP
   ports:
     - name: http
