@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-atomic-design
-          image: tingtt/slide:atomic-design-v1.0.2
+          image: tingtt/slide:atomic-design-v1.0.3
           imagePullPolicy: Always
           resources:
             requests:
