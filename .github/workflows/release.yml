@@ -3,7 +3,7 @@ name: Publish Docker image
 on:
   push:
     tags:
-      - '*'
+      - 'atomic-design/v*'
 
 jobs:
   push_to_registry:
@@ -42,4 +42,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            BASE=atomic-design
+            BASE=/atomic-design/
