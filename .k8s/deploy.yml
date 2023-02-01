@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-cttit
-          image: registry.tingtt.jp/tingtt/slidev/cttit:v1.0.2
+          image: registry.tingtt.jp/tingtt/slidev/cttit:v1.0.3
           imagePullPolicy: Always
           resources:
             requests:
@@ -51,7 +51,7 @@ spec:
             periodSeconds: 10
           ports:
             - containerPort: 80
-              name: slidev-cttit
+              name: http
       restartPolicy: Always
 ---
 # https://kubernetes.io/docs/concepts/services-networking/service/
@@ -65,7 +65,7 @@ spec:
     app: slidev-cttit
   type: ClusterIP
   ports:
-    - name: slidev-cttit
+    - name: http
       protocol: TCP
       port: 80
       targetPort: 80
