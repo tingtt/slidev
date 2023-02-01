@@ -1,0 +1,73 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slidev-cttit
+  namespace: slidev
+  labels:
+    app: slidev-cttit
+spec:
+  selector:
+    matchLabels:
+      app: slidev-cttit
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: slidev-cttit
+    spec:
+      containers:
+        - name: slidev-cttit
+          image: registry.tingtt.jp/tingtt/slidev/cttit:v1.0.2
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /-/readiness
+              port: 80
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+            periodSeconds: 10
+          ports:
+            - containerPort: 80
+              name: slidev-cttit
+      restartPolicy: Always
+---
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: slidev-cttit
+  namespace: slidev
+spec:
+  selector:
+    app: slidev-cttit
+  type: ClusterIP
+  ports:
+    - name: slidev-cttit
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+
