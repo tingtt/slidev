@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-cttit
-          image: tingtt/slide:cttit-v1.0.3
+          image: tingtt/slide:cttit-v1.1.0
           imagePullPolicy: Always
           resources:
             requests:
