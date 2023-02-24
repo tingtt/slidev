@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: slidev-systemd-cd
-          image: tingtt/slide:systemd-cd-v2.1.1
+          image: tingtt/slide:systemd-cd-v3.0.0
           imagePullPolicy: Always
           resources:
             requests:
